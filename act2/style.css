@@ -1,0 +1,285 @@
+/* GENERAL */
+
+:root {
+    --bgmain: #ffe1ee;
+    --bgline: #5d4038;
+    --mainbrown: #5e433e;
+    --brown: #583c2f;
+    --pink: #ffc7d8;
+    --green: #bdff7a;
+    --subpink: #ffe1ee;
+    --subbrown: #85504a;
+}
+
+
+* {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', Verdana, Arial, sans-serif;
+    color: var(--brown);
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+    grid-template-rows: 100px 50px 1fr 100px;
+    min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+    grid-area: header;
+    background-color: var(--green);
+    font-family: "Parkinsans";
+    height: 100;
+    border-bottom: 3px dashed var(--bgline);
+    align-items: center;
+    padding-top: 2rem;
+}
+
+/* NAVIGATION */
+
+.nav {
+    grid-area: nav;
+    background-color: var(--bgline);
+    font-family: 'Parkinsans';
+    align-content: center;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav a:hover {
+    font-weight: bolder;
+}
+
+/* MAIN */
+
+.main {
+    grid-area: main;
+    border-top: 3px dashed #5d4038;
+    border-bottom: 3px dashed #5d4038;
+}
+
+.pad {
+    padding: 20px;
+}
+
+/*HOME PHP*/
+
+.title,
+.menu,
+.info {
+    background-color: white;
+    height: 45vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu,
+.info p {
+    font-size: larger;
+}
+
+.menu,
+.info p {
+    color: white;
+    text-shadow: 0 1px 1px rgba(79, 52, 46, 0.5);
+}
+
+.title {
+    background-color: white;
+    background-image: radial-gradient(var(--subbrown) 0.5px, transparent 0.5px), radial-gradient(var(--subbrown) 0.5px, var(--pink) 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    height: 20vw;
+}
+
+.menu {
+    background-image: url(images/bg-2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.info {
+    background-image: url(images/bg-3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.divider {
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    display: block;
+    position: relative;
+    background-color: var(--pink);
+    background-image:
+        radial-gradient(#5d4038 20%, transparent 20%),
+        radial-gradient(#5d4038 20%, transparent 20%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+.title h1 {
+    color: #5c3310;
+    font-size: 36px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.description {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+.btn {
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.order {
+    display: inline-block;
+    background-color: var(--subbrown);
+    color: white;
+}
+
+.order:hover {
+    background-color: var(--brown);
+    transform: scale(1.05);
+}
+
+.contact {
+    background-color: var(--pink);
+    color: #5c3310;
+}
+
+.contact:hover {
+    background-color: #ffb1c8;
+    color: white;
+    transform: scale(1.05);
+}
+
+/*ORDER PHP*/
+
+.mainmenu {
+    background-color: white;
+    background-image: radial-gradient(var(--subbrown) 0.5px, transparent 0.5px), radial-gradient(var(--subbrown) 0.5px, white 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+.categ {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    clear: both;
+    margin-bottom: 2rem;
+}
+
+.main-item {
+    width: 280px;
+    margin: 15px;
+    text-align: center;
+}
+
+.menu-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: solid 4px var(--pink);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/*INFO PHP*/
+
+.bg {
+    background-color: var(--subpink);
+}
+
+.deets {
+    height: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(images/bg-1.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.details {
+    min-height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    list-style:circle;
+}
+
+/* FOOTER */
+
+.footer {
+    grid-area: footer;
+    text-align: center;
+    align-content: center;
+    background: var(--bgline);
+    color: white;
+    padding: 1rem;
+}
+
+/* TABLET & UP */
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-areas:
+            "header header header"
+            "left main main"
+            "footer footer footer";
+        grid-template-columns: 180px 1fr;
+    }
+
+    .products {
+        flex-direction: row;
+    }
+}
+
+/* DESKTOP & UP */
+@media (min-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 220px 1fr;
+    }
+
+    .products {
+        flex-direction: row;
+    }
+}
