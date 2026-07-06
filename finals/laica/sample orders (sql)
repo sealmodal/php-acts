@@ -1,0 +1,8 @@
+INSERT INTO orders
+(book_id, quantity, total_amount, order_status)
+
+VALUES
+
+(1,1,450,'Pending'),
+
+(2,2,1235,'Pending');
