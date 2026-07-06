@@ -10,10 +10,13 @@
  * In production, validated data will be inserted into the customers table via XAMPP MySQL.
  * Use password_hash() before storing the password — never store plain text.
  *
- * NOTE: session_start() is called inside includes/header.php, which this
- * file requires further down. This page doesn't touch $_SESSION before
- * that point, so it doesn't need its own separate session_start() call.
+ * NOTE: session_start() is called here because this page now writes to
+ * $_SESSION during form handling below (auto-login + queuing a welcome
+ * notification), which happens before includes/header.php gets required
+ * further down the file.
  */
+
+session_start();
 
 // -------------------------------------------------------
 // PLACEHOLDER: Redirect if already logged in.
@@ -57,6 +60,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     if (empty($errors)) {
         // PLACEHOLDER: This is where DB insertion goes in production.
         // Example: $stmt = $pdo->prepare("INSERT INTO customers (first_name, ...) VALUES (?, ...)");
+
+        // -------------------------------------------------------
+        // PLACEHOLDER: Auto sign-in the new customer.
+        // In production, customer_id would be the new row's real ID
+        // from the INSERT above instead of a fixed placeholder value.
+        // -------------------------------------------------------
+        $_SESSION['customer_id']    = 1;
+        $_SESSION['customer_name']  = trim($first_name . ' ' . $last_name);
+        $_SESSION['customer_email'] = $email;
+
+        // -------------------------------------------------------
+        // PLACEHOLDER: Queue a "you registered!" notification.
+        // In production this would be an INSERT into a notifications
+        // table tied to the new customer_id, not a session array.
+        // -------------------------------------------------------
+        $_SESSION['notifications']   = $_SESSION['notifications'] ?? [];
+        $_SESSION['notifications'][] = [
+            'message' => "You've successfully registered! Welcome to The Literary Nook, " . $first_name . ".",
+            'time'    => date('F j, Y g:i A'),
+            'read'    => false,
+        ];
+
         $success = true;
     }
 }
@@ -84,10 +109,11 @@ $page_title = "Create Account - The Literary Nook";
             <i class="fas fa-check-circle"></i>
             <h3>Account Created!</h3>
             <p>
-                Welcome to The Literary Nook! A confirmation email has been sent to your inbox.
+                Welcome to The Literary Nook! You're now signed in, and a confirmation
+                email has been sent to your inbox.
                 <br>(Placeholder - email sending not yet implemented. See Section 5.)
             </p>
-            <a href="login.php" class="btn btn--primary">PROCEED TO LOGIN</a>
+            <a href="account.php" class="btn btn--primary">GO TO YOUR PROFILE</a>
         </div>
 
         <?php else: ?>
