@@ -1,0 +1,32 @@
+INSERT INTO books
+(title, author, category, price, discount, stock)
+
+VALUES
+
+('Harry Potter and the Sorcerer''s Stone',
+'J.K. Rowling',
+'Fantasy',
+500,
+10,
+20),
+
+('Atomic Habits',
+'James Clear',
+'Self Help',
+650,
+5,
+15),
+
+('The Alchemist',
+'Paulo Coelho',
+'Fiction',
+450,
+0,
+12),
+
+('Rich Dad Poor Dad',
+'Robert Kiyosaki',
+'Finance',
+550,
+15,
+8);
