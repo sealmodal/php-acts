@@ -30,7 +30,7 @@ session_start();
 //   2. Check if email already exists: SELECT * FROM customers WHERE email = ?
 //   3. Hash the password: password_hash($password, PASSWORD_DEFAULT)
 //   4. Insert into customers table
-//   5. Send confirmation email (Section 5 - Registration Confirmation)
+//   5. Send confirmation email (placeholder idk how to yet)
 //   6. Set session and redirect to account.php
 // -------------------------------------------------------
 $errors  = [];
@@ -111,7 +111,7 @@ $page_title = "Create Account - The Literary Nook";
             <p>
                 Welcome to The Literary Nook! You're now signed in, and a confirmation
                 email has been sent to your inbox.
-                <br>(Placeholder - email sending not yet implemented. See Section 5.)
+                <br>(Placeholder - email sending not yet implemented.)
             </p>
             <a href="account.php" class="btn btn--primary">GO TO YOUR PROFILE</a>
         </div>
