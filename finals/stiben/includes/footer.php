@@ -73,7 +73,6 @@
     <div class="footer__bottom">
         <div class="container">
             <p>&copy; <?php echo date('Y'); ?> The Literary Nook. All rights reserved.</p>
-            <p>Built on XAMPP (localhost) — switch to a live server for production deployment.</p>
         </div>
     </div>
 </footer><!-- /footer -->
