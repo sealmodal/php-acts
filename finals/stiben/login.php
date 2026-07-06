@@ -32,8 +32,7 @@ session_start();
 //   4. Set $_SESSION['customer_id'] and $_SESSION['customer_name']
 //   5. Redirect to account.php or previous page
 // -------------------------------------------------------
-$error_message   = "";
-$success_message = "";
+$error_message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $email    = trim($_POST['email']    ?? '');
@@ -42,9 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     // PLACEHOLDER: Hardcoded test credentials for UI testing only.
     // Remove this block entirely when real DB auth is implemented.
     if ($email === 'test@theliterarynook.com' && $password === 'password123') {
-        $_SESSION['customer_name'] = 'Test User';
-        // In production: header('Location: account.php'); exit;
-        $success_message = "Login successful! (Placeholder - no redirect yet.)";
+        // PLACEHOLDER: Fake session data standing in for a real DB row.
+        // In production, customer_id would come from the customers table.
+        $_SESSION['customer_id']    = $_SESSION['customer_id'] ?? 1;
+        $_SESSION['customer_name']  = $_SESSION['customer_name']  ?? 'Test User';
+        $_SESSION['customer_email'] = $email;
+
+        // Now that login actually works, send them to their profile page.
+        header('Location: account.php');
+        exit;
     } else {
         $error_message = "Invalid email or password. Please try again.";
     }
@@ -77,18 +82,11 @@ $page_title = "Login - The Literary Nook";
                 Welcome to our new website! For previously registered users, please click "Forgot Password" and reset your password to log in.
             </div>
 
-            <!-- Error or success message shown after form submit -->
+            <!-- Error message shown if login fails -->
             <?php if (!empty($error_message)): ?>
                 <div class="form-message form-message--error">
                     <i class="fas fa-exclamation-circle"></i>
                     <?php echo htmlspecialchars($error_message); ?>
-                </div>
-            <?php endif; ?>
-
-            <?php if (!empty($success_message)): ?>
-                <div class="form-message form-message--success">
-                    <i class="fas fa-check-circle"></i>
-                    <?php echo htmlspecialchars($success_message); ?>
                 </div>
             <?php endif; ?>
 
