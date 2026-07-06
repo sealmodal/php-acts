@@ -12,12 +12,16 @@
  * BEFORE requiring this file:
  *   $page_title    - string, used in <title>. Defaults to "The Literary Nook".
  *   $is_logged_in  - bool, whether to show the customer name or Login/Register link.
+ *                    Defaults to auto-detecting from $_SESSION['customer_id'] so
+ *                    pages don't have to set this manually anymore.
  *   $customer_name - string, shown in header actions when $is_logged_in is true.
+ *                    Defaults to $_SESSION['customer_name'] if present.
  *
  * NOTE: session_start() is called here so every page automatically has
  * session access without repeating it in each file. The status check makes
- * it safe even if a page (like login.php) already started the session
- * earlier — e.g. because it needed $_SESSION before this include happens.
+ * it safe even if a page (like login.php or register.php) already started
+ * the session earlier — e.g. because it needed $_SESSION before this
+ * include happens.
  */
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -25,9 +29,25 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // Defaults so pages that don't set these variables still work correctly.
+// $is_logged_in and $customer_name now fall back to whatever is in the
+// session, so login state "just works" on every page automatically.
 $page_title    = $page_title    ?? "The Literary Nook";
-$is_logged_in  = $is_logged_in  ?? false;
-$customer_name = $customer_name ?? "";
+$is_logged_in  = $is_logged_in  ?? isset($_SESSION['customer_id']);
+$customer_name = $customer_name ?? ($_SESSION['customer_name'] ?? "");
+
+// -------------------------------------------------------
+// PLACEHOLDER: Count unread notifications for the little red badge
+// next to the "Notifications" link below. In production this would
+// be: SELECT COUNT(*) FROM notifications WHERE customer_id = ? AND read = 0
+// -------------------------------------------------------
+$unread_notifications_count = 0;
+if (!empty($_SESSION['notifications'])) {
+    foreach ($_SESSION['notifications'] as $notification) {
+        if (empty($notification['read'])) {
+            $unread_notifications_count++;
+        }
+    }
+}
 
 // -------------------------------------------------------
 // PLACEHOLDER: Hardcoded nav categories.
@@ -108,6 +128,19 @@ $nav_links = ["Books", "Non Books", "Bestsellers", "Collections", "Book Reviews"
                 <a href="login.php" class="action-link">
                     <i class="fas fa-user"></i>
                     <span>Login/Register</span>
+                </a>
+            <?php endif; ?>
+
+            <!-- Notifications link — only shown when a customer is signed in -->
+            <!-- PLACEHOLDER: badge count comes from $_SESSION for now; in -->
+            <!-- production it'll come from a real notifications table query. -->
+            <?php if ($is_logged_in): ?>
+                <a href="notifications.php" class="action-link">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                    <?php if ($unread_notifications_count > 0): ?>
+                        <span class="cart-badge"><?php echo $unread_notifications_count; ?></span>
+                    <?php endif; ?>
                 </a>
             <?php endif; ?>
 
