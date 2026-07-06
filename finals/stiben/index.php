@@ -12,12 +12,10 @@
  */
 
 // -------------------------------------------------------
-// PLACEHOLDER: Simulated "is user logged in?" check.
-// In the real system, this will check the session after DB login.
-// Replace this with: $is_logged_in = isset($_SESSION['customer_id']);
+// NOTE: $is_logged_in and $customer_name used to be hardcoded here.
+// includes/header.php now auto-detects login state from $_SESSION,
+// so this page doesn't need to set them manually anymore.
 // -------------------------------------------------------
-$is_logged_in = false;
-$customer_name = ""; // Will come from $_SESSION['customer_name'] later
 
 // -------------------------------------------------------
 // PLACEHOLDER: Hardcoded featured books for display.
