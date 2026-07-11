@@ -9,7 +9,7 @@ $orders = [
         "product" => "Omniscient Reader's Viewpoint x 1",
         "status" => "Delivered",
         "amount" => "₱2,500",
-        "email" => "elsannaaa@gmail.com",
+        "email" => "elsanna@gmail.com",
         "address" => "Quezon City, South Triangle, 1130",
         "proof" => "proof.jpg"
     ],
@@ -19,7 +19,7 @@ $orders = [
         "product" => "Omniscient Reader's Viewpoint x 2",
         "status" => "Shipped",
         "amount" => "₱4,500",
-        "email" => "elsannaaa@gmail.com",
+        "email" => "elsanna@gmail.com",
         "address" => "Quezon City, South Triangle, 1130",
         "proof" => "proof.jpg"
     ],
@@ -30,7 +30,7 @@ $orders = [
         "product" => "The Beginning After The End x 1",
         "status" => "Pending",
         "amount" => "₱650",
-        "email" => "elsannaaa@gmail.com",
+        "email" => "elsanna@gmail.com",
         "address" => "Quezon City, South Triangle, 1130",
         "proof" => ""
     ],
@@ -40,7 +40,7 @@ $orders = [
         "product" => "Solo Leveling x 1",
         "status" => "Confirmed",
         "amount" => "₱700",
-        "email" => "elsannaaa@gmail.com",
+        "email" => "elsanna@gmail.com",
         "address" => "Quezon City, South Triangle, 1130",
         "proof" => ""
     ]
