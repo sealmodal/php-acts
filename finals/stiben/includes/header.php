@@ -175,7 +175,9 @@ $nav_links = ["Books", "Non Books", "Bestsellers", "Collections", "Book Reviews"
         <?php foreach ($nav_links as $link): ?>
             <!-- PLACEHOLDER: href="#" — real links will go to category.php?slug=books etc. -->
             <li class="navbar__item">
-                <a href="#" class="navbar__link"><?php echo $link; ?></a>
+                <a href="<?php echo $link === 'Books' ? 'books.php' : '#'; ?>" class="navbar__link">
+                    <?php echo $link; ?>
+                </a>
             </li>
         <?php endforeach; ?>
     </ul>
